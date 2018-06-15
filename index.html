@@ -93,6 +93,32 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1>Overview</h1>
+                    <p>
+                        To create soft shadows, I treated point lights as area lights. Then, for the shadow calculation I would cast
+                        shadow feeler rays to a random points on the area light based on the size of the area light and the number
+                        of samples requested. The results are then averaged to produce the final color.
+                        I experimented with three types of area lights:
+                    </p>
+                    <h3>Aligned area light</h3>
+                        Aligned area lights are quads that are computed to face the point that we are calculating
+                        shadows for. This is done by using cross products between the light vector (point to point light) and up vector
+                        to find the <i>u</i> vector, and the light vector and  <i>u</i> vector to find the <i>v</i> vector.
+                        Points are then samples on the quad formed by the <i>u</i> and <i>v</i> vectors, and a user-defined size.
+                    <p>
+
+                    </p>
+                    <h3>XZ area light</h3>
+                    <p>
+                        XZ area lights are just quick and easy area lights where points are sampled
+                        randomly in the X and Z directions relative to the point light based on a user-defined
+                        size.
+                    </p>
+                    <h3>Spherical light</h3>
+                    <p>
+                        For spherical area lights, I treated each point as a sphere with a user-defined
+                        radius. I sample points on the surface of the sphere to create the shadow feeler
+                        rays.
+                    </p>
                 </div>
             </div>
         </div>
